@@ -44,10 +44,12 @@ const inhalte = {
   ],
 
   // ---- Ausführlichere Beschreibung ----
-  beschreibung: "Das Barber Club Duschgel ist auf die tägliche Pflege von Haut, Haaren und Bart abgestimmt. Ätherisches Zedernholzöl gibt eine warme, holzige Duftnote, wie man sie aus dem klassischen Barbershop kennt. Der Flaschenkörper besteht zu 100 % aus recyceltem Plastik.",
+  beschreibung: "Das Stop Stress Duschgel von L'Oréal Paris Men Expert ist ein intensives Waschgel speziell für Männerhaut. Es reinigt intensiv und hinterlässt einen holzig-fruchtigen Duft.
+
+Das intensive Stop Stress Duschgel von L'Oréal Paris Men Expert ist speziell für Männer konzipiert und reinigt sowie pflegt nachhaltig. Der holzig-fruchtige Duft sorgt für ein entspannendes Duscherlebnis. Zudem wirkt das Stop Stress Duschgel feuchtigkeitsspendend und sorgt für ein Anti-Stress-Gefühl für Körper und Geist. Das Stop Stress Duschgel ist grundsätzlich für alle Hauttypen geeignet ist.",
 
   // ---- Anwendungshinweis ----
-  anwendung: "Anwendung: Auf feuchte Haut, Haare oder Bart auftragen, sanft einmassieren und gründlich mit Wasser ausspülen.",
+  anwendung: "Anwendung: Zunächst den Körper, das Gesicht sowie die Haare unter der Dusche ausreichend mit Wasser benetzen. Anschließend das Stop Stress Duschgel von L'Oréal Paris Men Expert auf die jeweiligen Körperstellen auftragen und dort aufschäumen. Nun den Schaum des kräftigenden und belebenden Waschgels sanft in das Haar sowie in die Haut einmassieren. Zum Schluss sorgfältig mit klarem, warmem Wasser abspülen. Das L'Oréal Paris Men Expert Stop Stress Duschgel überzeugt mit einem intensiv holzig-fruchtigen Duft und kann täglich, auch mehrfach, zur Reinigung verwendet werden.",
 
   // ---- Hinweis-Text über dem simulierten PayPal-Button ----
   zahlungshinweis: "Dieser Prototyp simuliert den Bezahlvorgang. Es findet keine echte Zahlung statt.",
