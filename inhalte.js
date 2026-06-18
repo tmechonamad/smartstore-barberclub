@@ -14,7 +14,7 @@
 const inhalte = {
 
   // ---- Kopfbereich / Eyebrow-Text über dem Produktnamen ----
-  eyebrow: "SMARTSTORE JenaSevenEleven · PRODUKTINFO",
+  eyebrow: "SMARTSTORE · PRODUKTINFO",
 
   // ---- Produktname und Untertitel ----
   produktname: "L'Oréal Men Expert Barber Club",
@@ -113,6 +113,48 @@ const inhalte = {
 
   // ---- Chatbot: Antwort, falls kein Schlüsselwort passt ----
   chatbotStandardantwort: "Das habe ich leider nicht verstanden. Frag mich gern nach Preis, Anwendung, Inhaltsstoffen oder Nachhaltigkeit.",
+
+  // ---- Kundenbewertungen ----
+  // Hier kannst du neue Bewertungen ergänzen oder bestehende ändern.
+  // "sterne" ist eine Zahl von 1 bis 5.
+  bewertungen: [
+    {
+      name: "Marco R.",
+      datum: "14.06.2026",
+      sterne: 5,
+      text: "Benutze das Duschgel jetzt seit einem Monat – Haut fühlt sich super an und der Duft hält wirklich lange. Nie wieder ohne!"
+    },
+    {
+      name: "Stefan K.",
+      datum: "09.06.2026",
+      sterne: 5,
+      text: "Perfekt für den Alltag. Haar, Bart und Körper in einem – spart Zeit und das Ergebnis überzeugt. Sehr empfehlenswert."
+    },
+    {
+      name: "Tobias M.",
+      datum: "02.06.2026",
+      sterne: 4,
+      text: "Toller Zedernholzduft und schöner Schaum. Würde mir noch etwas mehr Feuchtigkeit wünschen, aber insgesamt sehr gut."
+    },
+    {
+      name: "Lukas W.",
+      datum: "28.05.2026",
+      sterne: 5,
+      text: "Das Duschgel ist wirklich gut. Mein Bart fühlt sich nach der Dusche weich und gepflegt an. Klare Kaufempfehlung!"
+    },
+    {
+      name: "Felix B.",
+      datum: "20.05.2026",
+      sterne: 4,
+      text: "Guter Schaum, angenehmer Duft. Die Flasche aus Recycling-Plastik ist auch ein Plus. Sehr bewusstes Produkt."
+    },
+    {
+      name: "Jan D.",
+      datum: "11.05.2026",
+      sterne: 5,
+      text: "Habe das auf Empfehlung gekauft – bin begeistert. Reinigt gut, ohne die Haut auszutrocknen. Kaufe ich definitiv wieder."
+    }
+  ],
 
   // ---- Inhaltsstoffe mit kurzer Erklärung ----
   // Beim Antippen/Anklicken eines Inhaltsstoffs erscheint die
