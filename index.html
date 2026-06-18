@@ -663,109 +663,10 @@
 
 <script src="inhalte.js"></script>
 <script>
-  // ---------- Grundtexte ----------
-  document.getElementById('eyebrow').textContent = inhalte.eyebrow;
-  document.getElementById('begruessung').textContent = inhalte.begruessung;
-
-  // Begrüßungsuntertext mit klickbarem "Chat-Assistenten" Link
-  const begruessungEl = document.getElementById('begruessungUntertext');
-  const begruessungText = inhalte.begruessungUntertext;
-  const chatLinkText = "Chat-Assistenten";
-  const idx = begruessungText.indexOf(chatLinkText);
-  if (idx !== -1) {
-    begruessungEl.appendChild(document.createTextNode(begruessungText.substring(0, idx)));
-    const link = document.createElement('span');
-    link.className = 'chat-link';
-    link.textContent = chatLinkText;
-    link.addEventListener('click', () => {
-      overlay.classList.add('aktiv');
-      chatSheet.classList.add('aktiv');
-      if (!chatGeoeffnet){
-        fuegeNachrichtHinzu(inhalte.chatbotBegruessung, 'bot');
-        chatGeoeffnet = true;
-      }
-    });
-    begruessungEl.appendChild(link);
-    begruessungEl.appendChild(document.createTextNode(begruessungText.substring(idx + chatLinkText.length)));
-  } else {
-    begruessungEl.textContent = begruessungText;
-  }
-
-  document.getElementById('tagPreis').textContent = inhalte.preis;
-  document.getElementById('tagMenge').textContent = inhalte.menge;
-  document.getElementById('produktname').textContent = inhalte.produktname;
-  document.getElementById('produkttyp').textContent = inhalte.produkttyp;
-  document.getElementById('kurzbeschreibung').textContent = inhalte.kurzbeschreibung;
-  document.getElementById('beschreibung').textContent = inhalte.beschreibung;
-  document.getElementById('anwendung').textContent = inhalte.anwendung;
-  document.getElementById('zahlungshinweis').textContent = inhalte.zahlungshinweis;
-  document.getElementById('paypalBtnText').textContent = inhalte.zahlung.buttonText;
-  document.getElementById('fusszeile').textContent = inhalte.fusszeile;
-  document.getElementById('payErfolgTitel').textContent = inhalte.zahlung.erfolgTitel;
-  document.getElementById('payErfolgText').textContent = inhalte.zahlung.erfolgText;
-  document.getElementById('payClose').textContent = inhalte.zahlung.schliessenButton;
-
-  // X3 Wirkung
-  const wirkungenListe = document.getElementById('wirkungen');
-  inhalte.wirkungen.forEach(w => {
-    const li = document.createElement('li');
-    li.innerHTML = `<div class="titel">${w.titel}</div><div class="text">${w.text}</div>`;
-    wirkungenListe.appendChild(li);
-  });
-
-  // Inhaltsstoffe
-  const inhaltsstoffeEl = document.getElementById('inhaltsstoffe');
-  inhalte.inhaltsstoffe.forEach((stoff, i) => {
-    const span = document.createElement('span');
-    span.className = 'ingredient';
-    span.tabIndex = 0;
-    span.textContent = stoff.name;
-    span.addEventListener('click', () => zeigeInhaltsstoff(stoff));
-    inhaltsstoffeEl.appendChild(span);
-    if (i < inhalte.inhaltsstoffe.length - 1){
-      const dot = document.createElement('span');
-      dot.className = 'dot';
-      dot.textContent = ' · ';
-      inhaltsstoffeEl.appendChild(dot);
-    }
-  });
-
-  // Bewertungen
-  const bewertungenEl = document.getElementById('bewertungen');
-  inhalte.bewertungen.forEach(b => {
-    const card = document.createElement('div');
-    card.className = 'bewertung-card';
-    const sterne = '★'.repeat(b.sterne) + '☆'.repeat(5 - b.sterne);
-    card.innerHTML = `
-      <div class="bew-sterne">${sterne}</div>
-      <div class="bew-name">${b.name}</div>
-      <div class="bew-datum">${b.datum}</div>
-      <div class="bew-text">${b.text}</div>`;
-    bewertungenEl.appendChild(card);
-  });
-
-  // ---------- Sheets ----------
+  // Alle Variablen zuerst definieren
   const overlay = document.getElementById('overlay');
   const ingredientSheet = document.getElementById('ingredientSheet');
   const chatSheet = document.getElementById('chatSheet');
-
-  function schliesseAlleSheets(){
-    overlay.classList.remove('aktiv');
-    ingredientSheet.classList.remove('aktiv');
-    chatSheet.classList.remove('aktiv');
-  }
-  overlay.addEventListener('click', schliesseAlleSheets);
-
-  function zeigeInhaltsstoff(stoff){
-    document.getElementById('ingredientTitle').textContent = stoff.name;
-    document.getElementById('ingredientText').textContent = stoff.beschreibung;
-    overlay.classList.add('aktiv');
-    ingredientSheet.classList.add('aktiv');
-  }
-  document.getElementById('ingredientClose').addEventListener('click', schliesseAlleSheets);
-
-  // ---------- Chatbot ----------
-  const chatFab = document.getElementById('chatFab');
   const chatMessages = document.getElementById('chatMessages');
   const chatInput = document.getElementById('chatInput');
   let chatGeoeffnet = false;
@@ -778,20 +679,115 @@
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  chatFab.addEventListener('click', () => {
+  function schliesseAlleSheets(){
+    overlay.classList.remove('aktiv');
+    ingredientSheet.classList.remove('aktiv');
+    chatSheet.classList.remove('aktiv');
+  }
+
+  function oeffneChat(){
     overlay.classList.add('aktiv');
     chatSheet.classList.add('aktiv');
     if (!chatGeoeffnet){
       fuegeNachrichtHinzu(inhalte.chatbotBegruessung, 'bot');
       chatGeoeffnet = true;
     }
+  }
+
+  // ---------- Grundtexte ----------
+  document.getElementById('eyebrow').textContent = inhalte.eyebrow || '';
+  document.getElementById('tagPreis').textContent = inhalte.preis || '';
+  document.getElementById('tagMenge').textContent = inhalte.menge || '';
+  document.getElementById('produktname').textContent = inhalte.produktname || '';
+  document.getElementById('produkttyp').textContent = inhalte.produkttyp || '';
+  document.getElementById('kurzbeschreibung').textContent = inhalte.kurzbeschreibung || '';
+  document.getElementById('beschreibung').textContent = inhalte.beschreibung || '';
+  document.getElementById('anwendung').textContent = inhalte.anwendung || '';
+  document.getElementById('zahlungshinweis').textContent = inhalte.zahlungshinweis || '';
+  document.getElementById('paypalBtnText').textContent = (inhalte.zahlung || {}).buttonText || '';
+  document.getElementById('fusszeile').textContent = inhalte.fusszeile || '';
+  document.getElementById('payErfolgTitel').textContent = (inhalte.zahlung || {}).erfolgTitel || '';
+  document.getElementById('payErfolgText').textContent = (inhalte.zahlung || {}).erfolgText || '';
+  document.getElementById('payClose').textContent = (inhalte.zahlung || {}).schliessenButton || '';
+
+  // Begrüßung
+  if (inhalte.begruessung) {
+    document.getElementById('begruessung').textContent = inhalte.begruessung;
+  }
+  if (inhalte.begruessungUntertext) {
+    const begruessungEl = document.getElementById('begruessungUntertext');
+    const begruessungText = inhalte.begruessungUntertext;
+    const chatLinkText = "Chat-Assistenten";
+    const idx = begruessungText.indexOf(chatLinkText);
+    if (idx !== -1) {
+      begruessungEl.appendChild(document.createTextNode(begruessungText.substring(0, idx)));
+      const link = document.createElement('span');
+      link.className = 'chat-link';
+      link.textContent = chatLinkText;
+      link.addEventListener('click', oeffneChat);
+      begruessungEl.appendChild(link);
+      begruessungEl.appendChild(document.createTextNode(begruessungText.substring(idx + chatLinkText.length)));
+    } else {
+      begruessungEl.textContent = begruessungText;
+    }
+  }
+
+  // X3 Wirkung
+  const wirkungenListe = document.getElementById('wirkungen');
+  (inhalte.wirkungen || []).forEach(w => {
+    const li = document.createElement('li');
+    li.innerHTML = `<div class="titel">${w.titel}</div><div class="text">${w.text}</div>`;
+    wirkungenListe.appendChild(li);
   });
+
+  // Inhaltsstoffe
+  const inhaltsstoffeEl = document.getElementById('inhaltsstoffe');
+  (inhalte.inhaltsstoffe || []).forEach((stoff, i) => {
+    const span = document.createElement('span');
+    span.className = 'ingredient';
+    span.tabIndex = 0;
+    span.textContent = stoff.name;
+    span.addEventListener('click', () => {
+      document.getElementById('ingredientTitle').textContent = stoff.name;
+      document.getElementById('ingredientText').textContent = stoff.beschreibung;
+      overlay.classList.add('aktiv');
+      ingredientSheet.classList.add('aktiv');
+    });
+    inhaltsstoffeEl.appendChild(span);
+    if (i < inhalte.inhaltsstoffe.length - 1){
+      const dot = document.createElement('span');
+      dot.className = 'dot';
+      dot.textContent = ' · ';
+      inhaltsstoffeEl.appendChild(dot);
+    }
+  });
+
+  // Bewertungen
+  const bewertungenEl = document.getElementById('bewertungen');
+  (inhalte.bewertungen || []).forEach(b => {
+    const card = document.createElement('div');
+    card.className = 'bewertung-card';
+    const sterne = '★'.repeat(b.sterne) + '☆'.repeat(5 - b.sterne);
+    card.innerHTML = `
+      <div class="bew-sterne">${sterne}</div>
+      <div class="bew-name">${b.name}</div>
+      <div class="bew-datum">${b.datum}</div>
+      <div class="bew-text">${b.text}</div>`;
+    bewertungenEl.appendChild(card);
+  });
+
+  // ---------- Sheets ----------
+  overlay.addEventListener('click', schliesseAlleSheets);
+  document.getElementById('ingredientClose').addEventListener('click', schliesseAlleSheets);
+
+  // ---------- Chatbot ----------
+  document.getElementById('chatFab').addEventListener('click', oeffneChat);
   document.getElementById('chatClose').addEventListener('click', schliesseAlleSheets);
 
   function chatbotAntwortFinden(frage){
     const f = frage.toLowerCase();
-    const treffer = inhalte.chatbotAntworten.find(e => e.schluesselwoerter.some(w => f.includes(w)));
-    return treffer ? treffer.antwort : inhalte.chatbotStandardantwort;
+    const treffer = (inhalte.chatbotAntworten || []).find(e => e.schluesselwoerter.some(w => f.includes(w)));
+    return treffer ? treffer.antwort : (inhalte.chatbotStandardantwort || '');
   }
 
   function nachrichtSenden(){
@@ -814,14 +810,14 @@
   document.getElementById('paypalBtn').addEventListener('click', () => {
     payLoading.classList.remove('hidden');
     payErfolg.classList.add('hidden');
-    payStatus.textContent = inhalte.zahlung.schritt1;
+    payStatus.textContent = (inhalte.zahlung || {}).schritt1 || '';
     payModal.classList.add('aktiv');
-    setTimeout(() => { payStatus.textContent = inhalte.zahlung.schritt2; }, 1100);
+    setTimeout(() => { payStatus.textContent = (inhalte.zahlung || {}).schritt2 || ''; }, 1100);
     setTimeout(() => { payLoading.classList.add('hidden'); payErfolg.classList.remove('hidden'); }, 2200);
   });
   document.getElementById('payClose').addEventListener('click', () => payModal.classList.remove('aktiv'));
 
-  // Onlineshop Button (Demo)
+  // Onlineshop Button
   document.getElementById('shopBtn').addEventListener('click', e => {
     e.preventDefault();
     alert('Demo: Hier würde der Onlineshop von L\'Oréal Men Expert geöffnet.');
