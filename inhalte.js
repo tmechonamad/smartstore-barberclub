@@ -18,7 +18,7 @@ const inhalte = {
   begruessungUntertext: "Hier finden Sie alle Produktdetails auf einen Blick. Bei Fragen stehen wir Ihnen jederzeit zur Verfügung – nutzen Sie einfach unseren Chat-Assistenten unten rechts.",
 
   // ---- Kopfbereich / Eyebrow-Text über dem Produktnamen ----
-  eyebrow: "SMARTSTORE · PRODUKTINFO",
+  eyebrow: "SMARTSTORE JENA24 · PRODUKTINFO",
 
   // ---- Produktname und Untertitel ----
   produktname: "L'Oréal Men Expert Barber Club",
