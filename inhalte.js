@@ -15,7 +15,7 @@ const inhalte = {
 
   // ---- Begrüßungstext oben auf der Seite ----
   begruessung: "Herzlich willkommen in Ihrem Smartstore!",
-  begruessungUntertext: "Hier finden Sie alle Produktdetails auf einen Blick. Bei Fragen stehen wir Ihnen jederzeit zur Verfügung – nutzen Sie einfach unseren Chat-Assistenten unten rechts.",
+  begruessungUntertext: "Hier finden Sie alle Produktdetails auf einen Blick. Bei Fragen stehen wir Ihnen jederzeit zur Verfügung – nutzen Sie einfach unseren Chat-Assistenten unten rechts oder rufen Sie uns an. Unsere Telefonnummer finden Sie unten.",
 
   // ---- Kopfbereich / Eyebrow-Text über dem Produktnamen ----
   eyebrow: "SMARTSTORE Jena24 · PRODUKTINFO",
